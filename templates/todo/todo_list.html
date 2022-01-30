@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="card-header d-flex justify-content-between ">
+      <span>All Todo</span>
+      <a href="" class="btn btn-success btn-sm">Add New Todo</a>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">SN</th>
+                <th scope="col">Title</th>
+                <th scope="col">Is_Completed</th>
+                <th scope="col">Action</th>            
+              </tr>
+            </thead>
+            <tbody>
+                {% for todo in todos %}
+              <tr>
+                <td >{{forloop.counter}}</td>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.is_completed }}</td>
+                <td class="d-flex justify-content-between">
+                    <a href="{% url 'todo:detail' todo.id %}"><i class="bi bi-eye-fill text-success"></i></a>
+                    <a href=""><i class="bi bi-pen-fill text-primary"></i></a>
+                    <a href=""><i class="bi bi-trash-fill text-danger"></i></a>
+                    
+                </td>
+              </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+{% endblock content %}

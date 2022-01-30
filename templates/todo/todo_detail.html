@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card-header d-flex justify-content-between ">
+    <span>{{ todo.title }}</span>
+    <a href="" class="btn btn-success btn-sm">Add New Todo</a>
+  </div>
+  <div class="card-body">
+      <p>Title : {{ todo.title }}</p>
+      <p>Is_Complete : {{ todo.is_completed }}</p>
+      <p>Description : {{ todo.description }}</p>
+  </div>
+{% endblock content %}
