@@ -3,7 +3,7 @@
 
 <div class="card-header d-flex justify-content-between ">
     <span>{{ todo.title }}</span>
-    <a href="" class="btn btn-success btn-sm">Add New Todo</a>
+    <a href="{% url 'todo:create' %}" class="btn btn-success btn-sm">Add New Todo</a>
   </div>
   <div class="card-body">
       <p>Title : {{ todo.title }}</p>

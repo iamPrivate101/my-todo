@@ -47,3 +47,29 @@ def todo_delete(request,pk):
     except Todo.DoesNotExist:
         context["message"] = messages.error("Item Doesnt Exist")
     return redirect("/")
+
+
+def todo_update(request, pk):
+    context = dict()
+    try:
+        todo = Todo.objects.get(id = pk)
+    except Todo.DoesNotExist:
+        messages.error(request,"Item doesnt exist")
+        return("/")
+    
+    if request.method == "GET":
+        context["form"] = TodoForm(instance = todo)
+        return render(request, "todo/todo_update.html", context)
+    
+    form = TodoForm(request.POST)
+    if form.is_valid():
+        todo.title = form.cleaned_data.get('title')
+        todo.is_completed = form.cleaned_data.get('is_completed')
+        todo.description = form.cleaned_data.get('description')
+        todo.save()
+        messages.success(request,"Todo Sucessfully Updated")
+        return redirect('/')
+    context['form'] = form
+    return render(request, "todo/todo_update.html", context)
+
+    

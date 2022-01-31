@@ -31,14 +31,17 @@
     </nav>
     <!-- navbar end -->
 
-
-    {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{message}} </strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          {% endfor %}
-          {% endif %}
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{message}} </strong> 
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+   
+  {% endfor %}
+  {% endif %}
+</div>
+   
     <div class="container mt-5">
       <div class="card">
           

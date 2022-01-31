@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card-header d-flex justify-content-between ">
+    <span>Update Todo</span>
+    <a href="{% url 'todo:list' %}" class="btn btn-success btn-sm">Cancel</a>
+  </div>
+  <div class="card-body">
+      <form action="" method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="btn btn-success btn-sm">Update</button>
+      </form>
+  </div>
+{% endblock content %}

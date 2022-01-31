@@ -24,7 +24,7 @@
                 <td>{{ todo.is_completed }}</td>
                 <td class="d-flex justify-content-between">
                     <a href="{% url 'todo:detail' todo.id %}"><i class="bi bi-eye-fill text-success"></i></a>
-                    <a href="#"><i class="bi bi-pen-fill text-primary"></i></a>
+                    <a href="{% url 'todo:update' todo.id %}"><i class="bi bi-pen-fill text-primary"></i></a>
                     <a href="{% url 'todo:delete' todo.id %}"><i class="bi bi-trash-fill text-danger"></i></a>
                     
                 </td>
