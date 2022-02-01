@@ -5,11 +5,19 @@ from django.shortcuts import redirect, render
 from templates.todo.form import TodoForm
 from .models import Todo
 from django.contrib import messages
+from django.db.models import Q #for searching
 
 # Create your views here.
 def todo_list(request):
     context =dict()
-    context['todos'] = Todo.objects.all() #creating dictionary to pass all obj of Todo model
+    #for searching
+    if 'q' in request.GET:
+        q = request.GET['q']
+        multiple_q = Q(Q(title__icontains=q) | Q(is_completed__icontains=q))
+        context["todos"] = Todo.objects.filter(multiple_q)
+    #end searching
+    else:
+        context['todos'] = Todo.objects.all() #creating dictionary to pass all obj of Todo model
     return render(request,"todo/todo_list.html",context)
 
 
