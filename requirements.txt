@@ -4,6 +4,7 @@ click==8.0.3
 dj-database-url==1.0.0
 Django==4.0.1
 django-on-heroku==1.1.2
+gunicorn==20.1.0
 mypy-extensions==0.4.3
 pathspec==0.9.0
 platformdirs==2.4.1
