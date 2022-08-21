@@ -7,6 +7,9 @@ from .models import Todo
 from django.contrib import messages
 from django.db.models import Q #for searching
 
+def index(request):
+    return render(request,'todo/index.html')
+
 # Create your views here.
 def todo_list(request):
     context =dict()

@@ -3,7 +3,13 @@
 
 <div class="card-header d-flex justify-content-between ">
     <span>{{ todo.title }}</span>
-    <a href="{% url 'todo:create' %}" class="btn btn-success btn-sm">Add New Todo</a>
+    
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <a href="{% url 'todo:create' %}" class="btn  btn-md "><i class="bi bi-plus-square text-success"></i></a>
+      <a href="{% url 'todo:update' todo.id %}" class="btn  btn-md "><i class="bi bi-pen-fill text-primary"></i></a>
+      <a href="{% url 'todo:delete' todo.id %}" class="btn  btn-md "><i class="bi bi-trash-fill text-danger"></i></a>
+      <a href="{% url 'todo:create' %}" class="btn btn-success btn-md">Back</a>
+    </div>
   </div>
   <div class="card-body">
       <p>Title : {{ todo.title }}</p>
