@@ -1,8 +1,9 @@
-from multiprocessing import context
+
 from django.http import Http404
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
-from templates.todo.form import TodoForm
+from .form import TodoForm
 from .models import Todo
 from django.contrib import messages
 from django.db.models import Q #for searching
@@ -33,20 +34,48 @@ def todo_detail(request,pk):
 
     return render(request,'todo/todo_detail.html', context)
 
-
+@login_required
 def todo_create(request):
     context = dict()
     if request.method == "GET":
         context["form"] = TodoForm()
         print("Get Method")
         return render(request,"todo/todo_create.html",context)
+    
     form = TodoForm(request.POST)
-    if form.is_valid():
-        form.save()
+    if (form.is_valid()):
+        todo = form.save(commit=False)
+        todo.user = request.user
+        todo.save()
+    
+        # form.save()
+        # user = request.user.id
+        # print(user)
+        # todo=form.save(commit=False)
+        # todo.user = request.user.id
+        # todo.save()
+        # a.save()
+
         context["message"] = messages.success(request,"Inserted Successfully")
         return redirect("/")
     context['form'] = form
     return render(request,"todo/todo_create.html",context)
+
+# def todo_create(request):
+#     context = dict()
+#     if request.method == 'POST':
+#         form = TodoForm(request.POST)
+#     else:
+#         form = TodoForm()
+
+#     context = {
+#         'form' : form,
+#     }
+    
+#     return render(request,"todo/todo_create.html",context)
+
+
+
 
 
 def todo_delete(request,pk):
