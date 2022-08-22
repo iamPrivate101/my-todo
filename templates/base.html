@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" class="border" href="/static/icon.jpeg">
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +26,9 @@
       {% for message in messages %}
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>{{message}} </strong> 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
        
       {% endfor %}
       {% endif %}

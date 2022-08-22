@@ -1,18 +1,31 @@
 
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<div class="card-header d-flex justify-content-between ">
+<!-- <div class="card-header d-flex justify-content-between ">
     <h2>TODO APPLICATION</h2>
-  </div>
+  </div> -->
   <div class="card-body">
       
-    <div class="card" style="width: 18rem;">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Add Todo</h5>
-        <p class="card-text">Create your work list to organize  </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-6">
+        <div class="card text-center">
+          <img class="card-img-top img-thumbnail  "  src="{% static 'todo1.jpg' %}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><b>Organize Your Daily Work</b></h5>
+            <p class="card-text">Become focused, organized, and calm with Todoist. The world’s #1 task manager and to-do list app.</p>
+            {% if user.is_authenticated %}
+            
+            <a href="{% url 'todo:create' %}" class="btn btn-primary">Create</a>
+            <a href="{% url 'todo:list' %}" class="btn btn-primary">History</a>
+            {% else %}
+            <a href="{% url 'account_login' %}" class="btn btn-primary">Sign In</a>
+            <a href="{% url 'account_signup' %}" class="btn btn-primary">Sign Up</a>
+            {% endif %}
+          </div>
+        </div>
       </div>
+      
     </div>
 
       <br>
